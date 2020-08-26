@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		E71D1DF824F644DF00E18E47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71D1DF724F644DF00E18E47 /* AppDelegate.swift */; };
 		E71D1DFA24F644DF00E18E47 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71D1DF924F644DF00E18E47 /* SceneDelegate.swift */; };
-		E71D1DFC24F644DF00E18E47 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71D1DFB24F644DF00E18E47 /* ViewController.swift */; };
+		E71D1DFC24F644DF00E18E47 /* MainFactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71D1DFB24F644DF00E18E47 /* MainFactsViewController.swift */; };
 		E71D1E0124F644E100E18E47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E71D1E0024F644E100E18E47 /* Assets.xcassets */; };
 		E71D1E0424F644E100E18E47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E71D1E0224F644E100E18E47 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -18,7 +18,7 @@
 		E71D1DF424F644DF00E18E47 /* Facts about cats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Facts about cats.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E71D1DF724F644DF00E18E47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E71D1DF924F644DF00E18E47 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E71D1DFB24F644DF00E18E47 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E71D1DFB24F644DF00E18E47 /* MainFactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFactsViewController.swift; sourceTree = "<group>"; };
 		E71D1E0024F644E100E18E47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E71D1E0324F644E100E18E47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E71D1E0524F644E100E18E47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,8 +54,6 @@
 		E71D1DF624F644DF00E18E47 /* Facts about cats */ = {
 			isa = PBXGroup;
 			children = (
-				E71D1DF724F644DF00E18E47 /* AppDelegate.swift */,
-				E71D1DF924F644DF00E18E47 /* SceneDelegate.swift */,
 				E71D1E0C24F6465D00E18E47 /* Sources */,
 				E71D1E0B24F6464B00E18E47 /* Resources */,
 			);
@@ -75,9 +73,35 @@
 		E71D1E0C24F6465D00E18E47 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				E71D1DFB24F644DF00E18E47 /* ViewController.swift */,
+				E71D1E1024F64C3200E18E47 /* Application layer */,
+				E71D1E1124F64C3F00E18E47 /* Presentation layer */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		E71D1E1024F64C3200E18E47 /* Application layer */ = {
+			isa = PBXGroup;
+			children = (
+				E71D1DF724F644DF00E18E47 /* AppDelegate.swift */,
+				E71D1DF924F644DF00E18E47 /* SceneDelegate.swift */,
+			);
+			path = "Application layer";
+			sourceTree = "<group>";
+		};
+		E71D1E1124F64C3F00E18E47 /* Presentation layer */ = {
+			isa = PBXGroup;
+			children = (
+				E71D1E1224F64D3B00E18E47 /* Main facts */,
+			);
+			path = "Presentation layer";
+			sourceTree = "<group>";
+		};
+		E71D1E1224F64D3B00E18E47 /* Main facts */ = {
+			isa = PBXGroup;
+			children = (
+				E71D1DFB24F644DF00E18E47 /* MainFactsViewController.swift */,
+			);
+			path = "Main facts";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,7 +174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E71D1DFC24F644DF00E18E47 /* ViewController.swift in Sources */,
+				E71D1DFC24F644DF00E18E47 /* MainFactsViewController.swift in Sources */,
 				E71D1DF824F644DF00E18E47 /* AppDelegate.swift in Sources */,
 				E71D1DFA24F644DF00E18E47 /* SceneDelegate.swift in Sources */,
 			);

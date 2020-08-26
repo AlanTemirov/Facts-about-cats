@@ -8,13 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainFactsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
-
 
 }
 
