@@ -17,12 +17,19 @@ class MainFactsPresenter: MainFactsPresenterProtocol {
     private var facts: [Fact] = []
     
     func onAppear() {
+        view.setLoading(true)
         fetchFacts()
+        requestFacts()
+    }
+    
+    func onRefresh() {
+        view.setLoading(true)
         requestFacts()
     }
     
 }
 
+// MARK: - Private
 private extension MainFactsPresenter {
     
     func fetchFacts() {
@@ -30,6 +37,11 @@ private extension MainFactsPresenter {
             if let facts = facts {
                 self?.facts = facts
                 self?.view.reloadFacts()
+                if facts.count > 0  {
+                    self?.view.setLoading(false)
+                }
+            } else {
+                self?.view.setLoading(false)
             }
         }
     }
@@ -39,11 +51,13 @@ private extension MainFactsPresenter {
             if let facts = facts {
                 self?.facts = facts
                 self?.view.reloadFacts()
+                self?.view.setLoading(false)
+            } else {
+                self?.view.setLoading(false)
             }
+            
         }
-        
     }
-    
 }
 
 // MARK: - MainFactsDataProviderProtocol

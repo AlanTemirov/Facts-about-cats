@@ -14,6 +14,8 @@ protocol MainFactsViewProtocol: AnyObject {
     
     func reloadFacts()
     
+    func setLoading(_ loading: Bool)
+    
 }
 
 
@@ -24,6 +26,8 @@ protocol MainFactsPresenterProtocol {
     var interactor: MainFactsInteractorProtocol! { get set }
     
     func onAppear()
+    
+    func onRefresh()
     
 }
 

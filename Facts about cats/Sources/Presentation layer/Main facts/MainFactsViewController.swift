@@ -15,11 +15,18 @@ class MainFactsViewController: UIViewController, MainFactsViewProtocol {
     var presenter: MainFactsPresenterProtocol!
     var dataProvider: MainFactsDataProvider!
     
+    private let refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureView()
         configureTableView()
+        configureRefreshControl()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         presenter.onAppear()
     }
@@ -27,6 +34,15 @@ class MainFactsViewController: UIViewController, MainFactsViewProtocol {
     func reloadFacts() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
+        }
+    }
+    
+    func setLoading(_ loading: Bool) {
+        DispatchQueue.main.async {
+            loading ? self.showLoading() : self.hideLoading()
+            if !loading && self.refreshControl.isRefreshing {
+                self.refreshControl.endRefreshing()
+            }
         }
     }
     
@@ -48,6 +64,18 @@ private extension MainFactsViewController {
             MainFactsTableViewCell.nib,
             forCellReuseIdentifier: MainFactsTableViewCell.identifier
         )
+    }
+    
+    func configureRefreshControl() {
+        refreshControl.addTarget(self,
+                                 action: #selector(refresh),
+                                 for: .valueChanged)
+        tableView.addSubview(refreshControl)
+    }
+    
+    @objc func refresh() {
+        refreshControl.beginRefreshing()
+        presenter.onRefresh()
     }
     
 }

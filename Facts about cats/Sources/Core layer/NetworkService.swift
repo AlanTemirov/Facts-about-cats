@@ -22,7 +22,8 @@ protocol NetworkServiceProtocol {
         path: String,
         type: RequestType,
         parameters: [String: Any]? ,
-        completion: @escaping (Data?, Error?) -> Void)
+        completion: @escaping (Data?, Error?) -> Void
+    )
 }
 
 // MARK: - Default implementation
@@ -32,7 +33,8 @@ extension NetworkServiceProtocol {
         path: String,
         type: RequestType = .get,
         parameters: [String: Any]? = nil,
-        completion: @escaping (Data?, Error?) -> Void) {
+        completion: @escaping (Data?, Error?) -> Void
+    ) {
         request(path: path, type: type, parameters: parameters, completion: completion)
     }
     

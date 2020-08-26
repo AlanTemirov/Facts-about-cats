@@ -35,6 +35,7 @@
 		E7C83C1624F685C200C0AF77 /* JSONMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C83C1524F685C200C0AF77 /* JSONMapper.swift */; };
 		E7C83C1824F68A1B00C0AF77 /* Collection+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C83C1724F68A1B00C0AF77 /* Collection+Utils.swift */; };
 		E7C83C1A24F68EF900C0AF77 /* FactsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C83C1924F68EF900C0AF77 /* FactsAPI.swift */; };
+		E7C83C1C24F6A19900C0AF77 /* UIViewController+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C83C1B24F6A19900C0AF77 /* UIViewController+Loading.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		E7C83C1524F685C200C0AF77 /* JSONMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMapper.swift; sourceTree = "<group>"; };
 		E7C83C1724F68A1B00C0AF77 /* Collection+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Utils.swift"; sourceTree = "<group>"; };
 		E7C83C1924F68EF900C0AF77 /* FactsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsAPI.swift; sourceTree = "<group>"; };
+		E7C83C1B24F6A19900C0AF77 /* UIViewController+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Loading.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +206,7 @@
 			children = (
 				E7C83BF124F6715900C0AF77 /* UIViewController+Utils.swift */,
 				E7C83C0324F67A0300C0AF77 /* NibLoadable.swift */,
+				E7C83C1B24F6A19900C0AF77 /* UIViewController+Loading.swift */,
 				E7C83C1124F6820100C0AF77 /* Optional+Utils.swift */,
 				E7C83C1724F68A1B00C0AF77 /* Collection+Utils.swift */,
 				E7C83C1324F6855D00C0AF77 /* Data+JSON.swift */,
@@ -317,6 +320,7 @@
 				E71D1E1824F6507500E18E47 /* CatsFactsDataModel.xcdatamodeld in Sources */,
 				E7C83BEE24F670C900C0AF77 /* MainFactsViewController.swift in Sources */,
 				E71D1E1524F64E5700E18E47 /* ViewControllerAssembly.swift in Sources */,
+				E7C83C1C24F6A19900C0AF77 /* UIViewController+Loading.swift in Sources */,
 				E7C83BF224F6715900C0AF77 /* UIViewController+Utils.swift in Sources */,
 				E7C83BFA24F6724000C0AF77 /* MainFactsInteractor.swift in Sources */,
 				E71D1DF824F644DF00E18E47 /* AppDelegate.swift in Sources */,
