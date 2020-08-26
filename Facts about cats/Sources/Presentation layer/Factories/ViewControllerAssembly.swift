@@ -22,8 +22,11 @@ class ViewControllerAssembly {
             bundle: nil
         )
         let mainFactsPresenter = MainFactsPresenter()
-        let mainFactsInteractor =
-            MainFactsInteractor(coreDataManager: embeddedContainer.coreDataManager)
+        let networkService = NetworkService()
+        let mainFactsInteractor = MainFactsInteractor(
+            coreDataManager: embeddedContainer.coreDataManager,
+            networkService: networkService
+        )
         let mainFactsDataProvider = MainFactsDataProvider()
         
         mainFactsViewController.presenter = mainFactsPresenter
@@ -34,7 +37,7 @@ class ViewControllerAssembly {
         
         mainFactsDataProvider.itemsProvider = mainFactsPresenter
         
-        return mainFactsViewController
+        return UINavigationController(rootViewController: mainFactsViewController)
     }
     
     func makeDetailFactsViewController() -> UIViewController {

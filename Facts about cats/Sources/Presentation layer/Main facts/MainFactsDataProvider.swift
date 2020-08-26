@@ -29,7 +29,8 @@ extension MainFactsDataProvider: UITableViewDataSource {
                 return UITableViewCell()
         }
         
-        cell.configure(with: indexPath)
+        
+        cell.configure(with: itemsProvider.item(at: indexPath.row)?.text)
         
         return cell
     }

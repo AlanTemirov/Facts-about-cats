@@ -29,6 +29,12 @@
 		E7C83C0424F67A0300C0AF77 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C83C0324F67A0300C0AF77 /* NibLoadable.swift */; };
 		E7C83C0A24F67C0500C0AF77 /* DetailFactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C83C0824F67C0500C0AF77 /* DetailFactsViewController.swift */; };
 		E7C83C0B24F67C0500C0AF77 /* DetailFactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7C83C0924F67C0500C0AF77 /* DetailFactsViewController.xib */; };
+		E7C83C0D24F67E1100C0AF77 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C83C0C24F67E1100C0AF77 /* NetworkService.swift */; };
+		E7C83C1224F6820100C0AF77 /* Optional+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C83C1124F6820100C0AF77 /* Optional+Utils.swift */; };
+		E7C83C1424F6855D00C0AF77 /* Data+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C83C1324F6855D00C0AF77 /* Data+JSON.swift */; };
+		E7C83C1624F685C200C0AF77 /* JSONMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C83C1524F685C200C0AF77 /* JSONMapper.swift */; };
+		E7C83C1824F68A1B00C0AF77 /* Collection+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C83C1724F68A1B00C0AF77 /* Collection+Utils.swift */; };
+		E7C83C1A24F68EF900C0AF77 /* FactsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C83C1924F68EF900C0AF77 /* FactsAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +62,12 @@
 		E7C83C0324F67A0300C0AF77 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		E7C83C0824F67C0500C0AF77 /* DetailFactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFactsViewController.swift; sourceTree = SOURCE_ROOT; };
 		E7C83C0924F67C0500C0AF77 /* DetailFactsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailFactsViewController.xib; sourceTree = SOURCE_ROOT; };
+		E7C83C0C24F67E1100C0AF77 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		E7C83C1124F6820100C0AF77 /* Optional+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Utils.swift"; sourceTree = "<group>"; };
+		E7C83C1324F6855D00C0AF77 /* Data+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+JSON.swift"; sourceTree = "<group>"; };
+		E7C83C1524F685C200C0AF77 /* JSONMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMapper.swift; sourceTree = "<group>"; };
+		E7C83C1724F68A1B00C0AF77 /* Collection+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Utils.swift"; sourceTree = "<group>"; };
+		E7C83C1924F68EF900C0AF77 /* FactsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +192,9 @@
 			children = (
 				E71D1E2824F653A400E18E47 /* EmbeddedContainer.swift */,
 				E71D1E2B24F6540900E18E47 /* CoreDataManager.swift */,
+				E7C83C0C24F67E1100C0AF77 /* NetworkService.swift */,
+				E7C83C1524F685C200C0AF77 /* JSONMapper.swift */,
+				E7C83C1924F68EF900C0AF77 /* FactsAPI.swift */,
 			);
 			path = "Core layer";
 			sourceTree = "<group>";
@@ -189,6 +204,9 @@
 			children = (
 				E7C83BF124F6715900C0AF77 /* UIViewController+Utils.swift */,
 				E7C83C0324F67A0300C0AF77 /* NibLoadable.swift */,
+				E7C83C1124F6820100C0AF77 /* Optional+Utils.swift */,
+				E7C83C1724F68A1B00C0AF77 /* Collection+Utils.swift */,
+				E7C83C1324F6855D00C0AF77 /* Data+JSON.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -293,7 +311,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E71D1E2624F6533D00E18E47 /* Fact+CoreDataProperties.swift in Sources */,
+				E7C83C1424F6855D00C0AF77 /* Data+JSON.swift in Sources */,
 				E7C83C0A24F67C0500C0AF77 /* DetailFactsViewController.swift in Sources */,
+				E7C83C1A24F68EF900C0AF77 /* FactsAPI.swift in Sources */,
 				E71D1E1824F6507500E18E47 /* CatsFactsDataModel.xcdatamodeld in Sources */,
 				E7C83BEE24F670C900C0AF77 /* MainFactsViewController.swift in Sources */,
 				E71D1E1524F64E5700E18E47 /* ViewControllerAssembly.swift in Sources */,
@@ -307,7 +327,11 @@
 				E71D1E2524F6533D00E18E47 /* Fact+CoreDataClass.swift in Sources */,
 				E7C83C0124F6798400C0AF77 /* MainFactsTableViewCell.swift in Sources */,
 				E7C83BF824F6720E00C0AF77 /* MainFactsProtocols.swift in Sources */,
+				E7C83C0D24F67E1100C0AF77 /* NetworkService.swift in Sources */,
+				E7C83C1224F6820100C0AF77 /* Optional+Utils.swift in Sources */,
 				E71D1E2924F653A400E18E47 /* EmbeddedContainer.swift in Sources */,
+				E7C83C1824F68A1B00C0AF77 /* Collection+Utils.swift in Sources */,
+				E7C83C1624F685C200C0AF77 /* JSONMapper.swift in Sources */,
 				E7C83BFD24F6757B00C0AF77 /* MainFactsDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

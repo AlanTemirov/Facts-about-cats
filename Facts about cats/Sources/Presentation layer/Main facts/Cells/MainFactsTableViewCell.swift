@@ -12,8 +12,8 @@ class MainFactsTableViewCell: UITableViewCell, NibLoadableProtocol {
     
     @IBOutlet private var factLabel: UILabel!
     
-    func configure(with index: IndexPath) {
-        factLabel.text = "\(index.row)"
+    func configure(with text: String?) {
+        factLabel.text = text
     }
     
 }

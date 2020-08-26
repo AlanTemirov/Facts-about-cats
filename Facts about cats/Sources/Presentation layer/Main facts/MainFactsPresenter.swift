@@ -16,6 +16,34 @@ class MainFactsPresenter: MainFactsPresenterProtocol {
     
     private var facts: [Fact] = []
     
+    func onAppear() {
+        fetchFacts()
+        requestFacts()
+    }
+    
+}
+
+private extension MainFactsPresenter {
+    
+    func fetchFacts() {
+        interactor.fetchFacts { [weak self] facts, coredataErrors in
+            if let facts = facts {
+                self?.facts = facts
+                self?.view.reloadFacts()
+            }
+        }
+    }
+    
+    func requestFacts() {
+        interactor.loadFacts(url: FactsAPI.url) { [weak self] facts, error in
+            if let facts = facts {
+                self?.facts = facts
+                self?.view.reloadFacts()
+            }
+        }
+        
+    }
+    
 }
 
 // MARK: - MainFactsDataProviderProtocol
@@ -23,6 +51,11 @@ extension MainFactsPresenter: MainFactsDataProviderProtocol {
     
     var count: Int {
         facts.count
+    }
+    
+    func item(at index: Int) -> Fact? {
+        guard facts.indices.contains(index) else { return nil }
+        return facts[index]
     }
     
 }

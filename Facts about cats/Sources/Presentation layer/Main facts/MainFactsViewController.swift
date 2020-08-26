@@ -18,7 +18,16 @@ class MainFactsViewController: UIViewController, MainFactsViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureView()
         configureTableView()
+        
+        presenter.onAppear()
+    }
+    
+    func reloadFacts() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
 }
@@ -26,8 +35,14 @@ class MainFactsViewController: UIViewController, MainFactsViewProtocol {
 // MARK: - Private
 private extension MainFactsViewController {
     
+    func configureView() {
+        title = "Facts"
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
     func configureTableView() {
         tableView.dataSource = dataProvider
+        tableView.delegate = dataProvider
         
         tableView.register(
             MainFactsTableViewCell.nib,

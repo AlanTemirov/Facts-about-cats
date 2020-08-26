@@ -20,9 +20,11 @@ protocol CoreDataManagerProtocol {
     
     var newBackgroundContext: NSManagedObjectContext { get }
     
-    func load(object: NSManagedObject.Type) -> Result<[NSManagedObject], CoreDataErrors>
+    func load<T: NSFetchRequestResult>(request: NSFetchRequest<T>) -> Result<[NSManagedObject], CoreDataErrors>
     
     func save()
+    
+    func clearData(entityName: String) throws
     
 }
 
@@ -32,7 +34,10 @@ class CoreDataManager: CoreDataManagerProtocol {
     
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: persistentContainerName)
-        container.loadPersistentStores(completionHandler: { _, _ in })
+        
+        container.loadPersistentStores(completionHandler: { _, _ in
+            container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+        })
         return container
     }()
     
@@ -58,9 +63,9 @@ class CoreDataManager: CoreDataManagerProtocol {
         try? context.save()
     }
     
-    func load(object: NSManagedObject.Type) -> Result<[NSManagedObject], CoreDataErrors> {
+    
+    func load<T: NSFetchRequestResult>(request: NSFetchRequest<T>) -> Result<[NSManagedObject], CoreDataErrors> {
         do {
-            let request = object.fetchRequest()
             guard let objects = try persistentContainer.viewContext.fetch(request) as? [NSManagedObject] else {
                 
                 return .failure(.unknown)
@@ -70,5 +75,18 @@ class CoreDataManager: CoreDataManagerProtocol {
             return .failure(.requestError(error))
         }
     }
+    
+    func clearData(entityName: String) throws {
+        do {
+            let context = viewContext
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            do {
+                try context.execute(deleteRequest)
+                save()
+            } catch let error {
+                throw error
+            }
+        }
+    }
 }
-
