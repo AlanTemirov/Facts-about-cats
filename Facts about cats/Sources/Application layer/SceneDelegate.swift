@@ -11,17 +11,25 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
+    var viewControllerFactory: ViewControllerFactory!
+    var embeddedContainer: EmbeddedContainer!
     
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+    func scene(
+        _ scene: UIScene,
+        willConnectTo session: UISceneSession,
+        options connectionOptions: UIScene.ConnectionOptions
+    ) {
         guard let windowScene = (scene as? UIWindowScene) else {
             return
         }
         
-        let window = UIWindow(windowScene: windowScene)
+        embeddedContainer = EmbeddedContainer()
+        viewControllerFactory = ViewControllerFactory(embeddedContainer: embeddedContainer)
         
-        window.rootViewController = MainFactsViewController()
-        self.window = window
-        window.makeKeyAndVisible()
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        
+        window?.rootViewController = viewControllerFactory.makeRootViewController()
+        window?.makeKeyAndVisible()
     }
     
 }
