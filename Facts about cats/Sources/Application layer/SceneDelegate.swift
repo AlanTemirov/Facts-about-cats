@@ -11,7 +11,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
-    var viewControllerFactory: ViewControllerFactory!
+    var viewControllerAssembly: ViewControllerAssembly!
     var embeddedContainer: EmbeddedContainer!
     
     func scene(
@@ -23,13 +23,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         
+        let window = UIWindow(windowScene: windowScene)
+        
         embeddedContainer = EmbeddedContainer()
-        viewControllerFactory = ViewControllerFactory(embeddedContainer: embeddedContainer)
+        viewControllerAssembly = ViewControllerAssembly(embeddedContainer: embeddedContainer)
         
-        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window.rootViewController = viewControllerAssembly.makeRootViewController()
         
-        window?.rootViewController = viewControllerFactory.makeRootViewController()
-        window?.makeKeyAndVisible()
+        self.window = window
+        window.makeKeyAndVisible()
     }
     
 }
