@@ -64,7 +64,7 @@ class MainFactsViewController: UIViewController, MainFactsViewProtocol {
 private extension MainFactsViewController {
     
     func configureView() {
-        title = "Facts"
+        title = "Cats facts"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
