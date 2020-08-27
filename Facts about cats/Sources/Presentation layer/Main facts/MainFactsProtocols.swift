@@ -8,13 +8,15 @@
 
 import Foundation
 
-protocol MainFactsViewProtocol: AnyObject {
+protocol MainFactsViewProtocol: TransitionHandler {
     
     var presenter: MainFactsPresenterProtocol! { get set }
     
     func reloadFacts()
     
     func setLoading(_ loading: Bool)
+    
+    func showError(_ error: String)
     
 }
 
@@ -28,6 +30,8 @@ protocol MainFactsPresenterProtocol {
     func onAppear()
     
     func onRefresh()
+    
+    func didSelectFact(_ fact: Fact)
     
 }
 

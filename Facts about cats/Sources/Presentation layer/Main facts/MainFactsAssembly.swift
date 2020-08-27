@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewControllerAssembly {
+class MainFactsAssembly {
     
     private let embeddedContainer: EmbeddedContainer
     
@@ -16,7 +16,7 @@ class ViewControllerAssembly {
         self.embeddedContainer = embeddedContainer
     }
     
-    func makeRootViewController() -> UIViewController {
+    func assemblyMainFacts() -> UIViewController {
         let mainFactsViewController = MainFactsViewController(
             nibName: MainFactsViewController.name,
             bundle: nil
@@ -33,16 +33,12 @@ class ViewControllerAssembly {
         mainFactsViewController.dataProvider = mainFactsDataProvider
         
         mainFactsPresenter.view = mainFactsViewController
+        mainFactsPresenter.transitionHandler = mainFactsViewController
         mainFactsPresenter.interactor = mainFactsInteractor
         
         mainFactsDataProvider.itemsProvider = mainFactsPresenter
         
         return UINavigationController(rootViewController: mainFactsViewController)
-    }
-    
-    func makeDetailFactsViewController() -> UIViewController {
-        let result = DetailFactsViewController()
-        return result
     }
     
 }

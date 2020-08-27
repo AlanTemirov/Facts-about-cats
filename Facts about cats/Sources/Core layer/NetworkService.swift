@@ -60,8 +60,10 @@ class NetworkService: NetworkServiceProtocol {
             request = buildPostRequest(url: url, parameters: parameters)
         }
         
-        URLSession
-            .shared
+        let urlSession = URLSession.init(configuration: .default)
+        urlSession.configuration.timeoutIntervalForRequest = 15
+        urlSession.configuration.timeoutIntervalForResource = 15
+        urlSession
             .dataTask(with: request) { completion($0, $2) }
             .resume()
     }

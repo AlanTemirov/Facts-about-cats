@@ -16,17 +16,24 @@ public class Fact: NSManagedObject, Mappable {
     func mapping(json: [String: Any]) {
         guard
             let id = json["_id"] as? String,
-            let text = json["text"] as? String
+            let text = json["text"] as? String,
+            let upvotes = json["upvotes"] as? Double
             else {
                 return
         }
         
         self.id = id
         self.text = text
-    }
-    
-    var kek: NSFetchRequestResult {
-        return self
+        self.upvotes = upvotes
+        
+        if let user = json["user"] as? [String: Any],
+            let userName = user["name"] as? [String: Any],
+            let firstUserName = userName["first"] as? String,
+            let lastUserName = userName["last"] as? String {
+            self.user = firstUserName + " " + lastUserName
+        } else {
+            self.user = "Unknown"
+        }
     }
     
 }

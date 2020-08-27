@@ -8,10 +8,10 @@
 
 import Foundation
 
-class MainFactsPresenter: MainFactsPresenterProtocol {
+class MainFactsPresenter: MainFactsPresenterProtocol, MainFactsRouterProtocol {
     
     weak var view: MainFactsViewProtocol!
-    
+    weak var transitionHandler: TransitionHandler!
     var interactor: MainFactsInteractorProtocol!
     
     private var facts: [Fact] = []
@@ -27,13 +27,21 @@ class MainFactsPresenter: MainFactsPresenterProtocol {
         requestFacts()
     }
     
+    func didSelectFact(_ fact: Fact) {
+        showFact(fact)
+    }
+    
 }
 
 // MARK: - Private
 private extension MainFactsPresenter {
     
     func fetchFacts() {
-        interactor.fetchFacts { [weak self] facts, coredataErrors in
+        interactor.fetchFacts { [weak self] facts, coredataError in
+            if let error = coredataError {
+                self?.view.showError(error.localizedDescription)
+            }
+            
             if let facts = facts {
                 self?.facts = facts
                 self?.view.reloadFacts()
@@ -48,6 +56,10 @@ private extension MainFactsPresenter {
     
     func requestFacts() {
         interactor.loadFacts(url: FactsAPI.url) { [weak self] facts, error in
+            if let error = error {
+                self?.view.showError(error.localizedDescription)
+            }
+            
             if let facts = facts {
                 self?.facts = facts
                 self?.view.reloadFacts()

@@ -38,7 +38,7 @@ extension UIViewController {
     
 }
 
-final class LoadingView: UIView {
+class LoadingView: UIView {
     
     fileprivate var activityIndicator: UIActivityIndicatorView!
     

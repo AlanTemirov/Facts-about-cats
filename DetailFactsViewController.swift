@@ -9,17 +9,26 @@
 import UIKit
 
 class DetailFactsViewController: UIViewController {
-
+    
     @IBOutlet private var authorLabel: UILabel!
     @IBOutlet private var detailFactTextView: UITextView!
     @IBOutlet private var upvotesLabel: UILabel!
     
+    var fact: Fact?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        configureElements()
     }
-
-
-
+    
+    func configureElements() {
+        guard let fact = fact else {
+            return
+        }
+        authorLabel.text = fact.user
+        detailFactTextView.text = fact.text
+        upvotesLabel.text = String(fact.upvotes)
+    }
+    
 }

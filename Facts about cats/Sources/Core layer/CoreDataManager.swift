@@ -10,6 +10,7 @@ import CoreData
 
 enum CoreDataErrors: Error {
     case requestError(_ error: Error)
+    case wrongType
     case unknown
     
 }

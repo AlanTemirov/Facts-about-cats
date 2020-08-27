@@ -21,12 +21,11 @@ class MainFactsInteractor: MainFactsInteractorProtocol {
         self.networkService = networkService
     }
     
-    
-    func loadFacts(url: String, completion: @escaping ([Fact]?, Error?) -> Void) {
+    func loadFacts(url: String, completion: @escaping ItemsClosure<[Fact]?, Error?>) {
         networkService.request(path: url) { data, error in
             
             guard error.isNil, let data = data else {
-                return completion([], error)
+                return completion(nil, error)
             }
             
             DispatchQueue.global(qos: .default).async { [unowned self] in
@@ -43,23 +42,26 @@ class MainFactsInteractor: MainFactsInteractorProtocol {
                     try self.coreDataManager.clearData(entityName: "Fact")
                     try context.save()
                     self.fetchFacts(completion: completion)
-                } catch(let error) {
-                    completion([], error)
+                } catch (let error) {
+                    completion(nil, error)
                 }
             }
             
         }
     }
     
-    func fetchFacts(completion: @escaping ([Fact]?, CoreDataErrors?) -> Void) {
+    func fetchFacts(completion: @escaping ItemsClosure<[Fact]?, CoreDataErrors?>) {
         DispatchQueue.global(qos: .default).async { [unowned self] in
             
             let request = NSFetchRequest<Fact>(entityName: "Fact")
+            request.sortDescriptors = [
+                NSSortDescriptor(key: "text", ascending: true)
+            ]
             let fetchedFactsResult = self.coreDataManager.load(request: request)
             switch fetchedFactsResult {
             case .success(let facts):
                 guard let facts = facts as? [Fact] else {
-                    completion([], .unknown)
+                    completion(nil, .wrongType)
                     return
                 }
                 completion(facts, nil)

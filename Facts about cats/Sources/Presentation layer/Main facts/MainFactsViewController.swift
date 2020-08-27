@@ -23,6 +23,8 @@ class MainFactsViewController: UIViewController, MainFactsViewProtocol {
         configureView()
         configureTableView()
         configureRefreshControl()
+        
+        dataProvider.didSelectFact = presenter.didSelectFact
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,6 +45,12 @@ class MainFactsViewController: UIViewController, MainFactsViewProtocol {
             if !loading && self.refreshControl.isRefreshing {
                 self.refreshControl.endRefreshing()
             }
+        }
+    }
+    
+    func showError(_ error: String) {
+        DispatchQueue.main.async {
+            self.view.showToast(errorMessage: error, duration: 5)
         }
     }
     

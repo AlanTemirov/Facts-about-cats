@@ -11,7 +11,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
-    var viewControllerAssembly: ViewControllerAssembly!
+    var viewControllerAssembly: MainFactsAssembly!
     var embeddedContainer: EmbeddedContainer!
     
     func scene(
@@ -26,9 +26,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         embeddedContainer = EmbeddedContainer()
-        viewControllerAssembly = ViewControllerAssembly(embeddedContainer: embeddedContainer)
+        viewControllerAssembly = MainFactsAssembly(embeddedContainer: embeddedContainer)
         
-        window.rootViewController = viewControllerAssembly.makeRootViewController()
+        window.rootViewController = viewControllerAssembly.assemblyMainFacts()
         
         self.window = window
         window.makeKeyAndVisible()

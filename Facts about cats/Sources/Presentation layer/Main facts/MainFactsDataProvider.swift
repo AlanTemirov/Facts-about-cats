@@ -12,6 +12,8 @@ class MainFactsDataProvider: NSObject {
     
     var itemsProvider: MainFactsDataProviderProtocol!
     
+    var didSelectFact: ItemClosure<Fact>?
+    
 }
 
 // MARK: - UITableViewDataSource
@@ -41,7 +43,9 @@ extension MainFactsDataProvider: UITableViewDataSource {
 extension MainFactsDataProvider: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("\(indexPath.row)")
+        if let fact = itemsProvider.item(at: indexPath.row) {
+            didSelectFact?(fact)
+        }
     }
     
 }
