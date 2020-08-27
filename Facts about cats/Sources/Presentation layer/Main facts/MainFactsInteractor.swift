@@ -21,7 +21,37 @@ class MainFactsInteractor: MainFactsInteractorProtocol {
         self.networkService = networkService
     }
     
-    func loadFacts(url: String, completion: @escaping ItemsClosure<[Fact]?, Error?>) {
+    func loadFacts(url: String, completion: @escaping ItemsClosure<[FactModel]?, Error?>) {
+        loadFacts(with: url) { facts, error in
+            if error.isNotNil {
+                completion(nil, error)
+            }
+            
+            let factsModelArray = self.transformToPonsoModel(facts: facts)
+            
+            completion(factsModelArray, nil)
+        }
+    }
+    
+    func obtainFacts(completion: @escaping ItemsClosure<[FactModel]?, CoreDataErrors?>) {
+        fetchFacts { facts, error in
+            if error.isNotNil {
+                completion(nil, error)
+            }
+            
+            let factsModelArray = self.transformToPonsoModel(facts: facts)
+            
+            completion(factsModelArray, nil)
+        }
+        
+    }
+    
+}
+
+// MARK: - Private
+private extension MainFactsInteractor {
+    
+    func loadFacts(with url: String, completion: @escaping ItemsClosure<[Fact]?, Error?>) {
         networkService.request(path: url) { data, error in
             
             guard error.isNil, let data = data else {
@@ -70,6 +100,22 @@ class MainFactsInteractor: MainFactsInteractorProtocol {
             }
             
         }
+    }
+    
+    func transformToPonsoModel(facts: [Fact]?) -> [FactModel] {
+        var factsModelArray: [FactModel] = []
+        
+        facts?.forEach {
+            let factModel = FactModel(
+                text: $0.text,
+                id: $0.id,
+                upvotes: $0.upvotes,
+                user: $0.user
+            )
+            factsModelArray.append(factModel)
+        }
+        
+        return factsModelArray
     }
     
 }

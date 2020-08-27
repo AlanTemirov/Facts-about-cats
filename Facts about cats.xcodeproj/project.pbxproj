@@ -42,6 +42,7 @@
 		E7C83C2524F6A7EF00C0AF77 /* DetailFactsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C83C2424F6A7EF00C0AF77 /* DetailFactsAssembly.swift */; };
 		E7C83C2724F6AA5E00C0AF77 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C83C2624F6AA5E00C0AF77 /* Typealiases.swift */; };
 		E7C83C2924F7AD1B00C0AF77 /* UIView+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C83C2824F7AD1B00C0AF77 /* UIView+Toast.swift */; };
+		E7C83C2D24F7B33D00C0AF77 /* FactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C83C2C24F7B33D00C0AF77 /* FactModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		E7C83C2424F6A7EF00C0AF77 /* DetailFactsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFactsAssembly.swift; sourceTree = "<group>"; };
 		E7C83C2624F6AA5E00C0AF77 /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		E7C83C2824F7AD1B00C0AF77 /* UIView+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Toast.swift"; sourceTree = "<group>"; };
+		E7C83C2C24F7B33D00C0AF77 /* FactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 		E71D1E1D24F6529D00E18E47 /* Business layer */ = {
 			isa = PBXGroup;
 			children = (
+				E7C83C2B24F7B32C00C0AF77 /* Models */,
 				E71D1E1E24F652CD00E18E47 /* Entities */,
 			);
 			path = "Business layer";
@@ -258,6 +261,14 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		E7C83C2B24F7B32C00C0AF77 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E7C83C2C24F7B33D00C0AF77 /* FactModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -331,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7C83C2D24F7B33D00C0AF77 /* FactModel.swift in Sources */,
 				E7C83C2524F6A7EF00C0AF77 /* DetailFactsAssembly.swift in Sources */,
 				E71D1E2624F6533D00E18E47 /* Fact+CoreDataProperties.swift in Sources */,
 				E7C83C1424F6855D00C0AF77 /* Data+JSON.swift in Sources */,

@@ -31,7 +31,7 @@ protocol MainFactsPresenterProtocol {
     
     func onRefresh()
     
-    func didSelectFact(_ fact: Fact)
+    func didSelectFact(_ fact: FactModel)
     
 }
 
@@ -41,9 +41,9 @@ protocol MainFactsInteractorProtocol {
     init(coreDataManager: CoreDataManagerProtocol,
          networkService: NetworkServiceProtocol)
     
-    func loadFacts(url: String, completion: @escaping ([Fact]?, Error?) -> Void)
+    func loadFacts(url: String, completion: @escaping ItemsClosure<[FactModel]?, Error?>)
     
-    func fetchFacts(completion: @escaping ([Fact]?, CoreDataErrors?) -> Void)
+    func obtainFacts(completion: @escaping ItemsClosure<[FactModel]?, CoreDataErrors?>)
     
     
 }
@@ -52,6 +52,6 @@ protocol MainFactsDataProviderProtocol {
     
     var count: Int { get }
     
-    func item(at index: Int) -> Fact?
+    func item(at index: Int) -> FactModel?
     
 }

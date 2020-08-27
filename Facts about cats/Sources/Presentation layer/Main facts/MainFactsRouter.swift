@@ -11,13 +11,13 @@ import Foundation
 
 protocol MainFactsRouterProtocol: RouteProtocol {
     
-    func showFact(_ fact: Fact)
+    func showFact(_ fact: FactModel)
     
 }
 
 extension MainFactsRouterProtocol {
     
-    func showFact(_ fact: Fact) {
+    func showFact(_ fact: FactModel) {
         if let result =
             DetailFactsAssembly().assemblyDetailFacts(with: fact) as? DetailFactsViewController {
             result.fact = fact

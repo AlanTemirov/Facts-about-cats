@@ -10,7 +10,7 @@ import UIKit
 
 class DetailFactsAssembly {
     
-    func assemblyDetailFacts(with fact: Fact) -> UIViewController {
+    func assemblyDetailFacts(with fact: FactModel) -> UIViewController {
         let detailFactsViewController = DetailFactsViewController(
             nibName: DetailFactsViewController.name,
             bundle: nil

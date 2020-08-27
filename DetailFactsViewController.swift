@@ -14,7 +14,7 @@ class DetailFactsViewController: UIViewController {
     @IBOutlet private var detailFactTextView: UITextView!
     @IBOutlet private var upvotesLabel: UILabel!
     
-    var fact: Fact?
+    var fact: FactModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()

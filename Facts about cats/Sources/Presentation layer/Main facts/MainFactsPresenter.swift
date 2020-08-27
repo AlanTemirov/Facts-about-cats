@@ -14,7 +14,7 @@ class MainFactsPresenter: MainFactsPresenterProtocol, MainFactsRouterProtocol {
     weak var transitionHandler: TransitionHandler!
     var interactor: MainFactsInteractorProtocol!
     
-    private var facts: [Fact] = []
+    private var facts: [FactModel] = []
     
     func onAppear() {
         view.setLoading(true)
@@ -27,7 +27,7 @@ class MainFactsPresenter: MainFactsPresenterProtocol, MainFactsRouterProtocol {
         requestFacts()
     }
     
-    func didSelectFact(_ fact: Fact) {
+    func didSelectFact(_ fact: FactModel) {
         showFact(fact)
     }
     
@@ -37,7 +37,7 @@ class MainFactsPresenter: MainFactsPresenterProtocol, MainFactsRouterProtocol {
 private extension MainFactsPresenter {
     
     func fetchFacts() {
-        interactor.fetchFacts { [weak self] facts, coredataError in
+        interactor.obtainFacts { [weak self] facts, coredataError in
             if let error = coredataError {
                 self?.view.showError(error.localizedDescription)
             }
@@ -79,7 +79,7 @@ extension MainFactsPresenter: MainFactsDataProviderProtocol {
         facts.count
     }
     
-    func item(at index: Int) -> Fact? {
+    func item(at index: Int) -> FactModel? {
         guard facts.indices.contains(index) else { return nil }
         return facts[index]
     }

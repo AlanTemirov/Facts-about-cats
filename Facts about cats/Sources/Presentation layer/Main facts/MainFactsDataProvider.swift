@@ -12,7 +12,7 @@ class MainFactsDataProvider: NSObject {
     
     var itemsProvider: MainFactsDataProviderProtocol!
     
-    var didSelectFact: ItemClosure<Fact>?
+    var didSelectFact: ItemClosure<FactModel>?
     
 }
 
