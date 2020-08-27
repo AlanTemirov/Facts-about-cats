@@ -43,6 +43,8 @@
 		E7C83C2724F6AA5E00C0AF77 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C83C2624F6AA5E00C0AF77 /* Typealiases.swift */; };
 		E7C83C2924F7AD1B00C0AF77 /* UIView+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C83C2824F7AD1B00C0AF77 /* UIView+Toast.swift */; };
 		E7C83C2D24F7B33D00C0AF77 /* FactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C83C2C24F7B33D00C0AF77 /* FactModel.swift */; };
+		E7C83C2F24F7B8DD00C0AF77 /* CoreDataManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C83C2E24F7B8DD00C0AF77 /* CoreDataManager+Extension.swift */; };
+		E7C83C3124F7B9D600C0AF77 /* NetworkService+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C83C3024F7B9D600C0AF77 /* NetworkService+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +86,8 @@
 		E7C83C2624F6AA5E00C0AF77 /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		E7C83C2824F7AD1B00C0AF77 /* UIView+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Toast.swift"; sourceTree = "<group>"; };
 		E7C83C2C24F7B33D00C0AF77 /* FactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactModel.swift; sourceTree = "<group>"; };
+		E7C83C2E24F7B8DD00C0AF77 /* CoreDataManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Extension.swift"; sourceTree = "<group>"; };
+		E7C83C3024F7B9D600C0AF77 /* NetworkService+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,7 +207,9 @@
 			children = (
 				E71D1E2824F653A400E18E47 /* EmbeddedContainer.swift */,
 				E71D1E2B24F6540900E18E47 /* CoreDataManager.swift */,
+				E7C83C2E24F7B8DD00C0AF77 /* CoreDataManager+Extension.swift */,
 				E7C83C0C24F67E1100C0AF77 /* NetworkService.swift */,
+				E7C83C3024F7B9D600C0AF77 /* NetworkService+Extension.swift */,
 				E7C83C1524F685C200C0AF77 /* JSONMapper.swift */,
 				E7C83C1924F68EF900C0AF77 /* FactsAPI.swift */,
 			);
@@ -245,9 +251,9 @@
 		E7C83C0524F67BA100C0AF77 /* Detail facts */ = {
 			isa = PBXGroup;
 			children = (
+				E7C83C2424F6A7EF00C0AF77 /* DetailFactsAssembly.swift */,
 				E7C83C0824F67C0500C0AF77 /* DetailFactsViewController.swift */,
 				E7C83C0924F67C0500C0AF77 /* DetailFactsViewController.xib */,
-				E7C83C2424F6A7EF00C0AF77 /* DetailFactsAssembly.swift */,
 			);
 			path = "Detail facts";
 			sourceTree = "<group>";
@@ -342,6 +348,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7C83C3124F7B9D600C0AF77 /* NetworkService+Extension.swift in Sources */,
+				E7C83C2F24F7B8DD00C0AF77 /* CoreDataManager+Extension.swift in Sources */,
 				E7C83C2D24F7B33D00C0AF77 /* FactModel.swift in Sources */,
 				E7C83C2524F6A7EF00C0AF77 /* DetailFactsAssembly.swift in Sources */,
 				E71D1E2624F6533D00E18E47 /* Fact+CoreDataProperties.swift in Sources */,

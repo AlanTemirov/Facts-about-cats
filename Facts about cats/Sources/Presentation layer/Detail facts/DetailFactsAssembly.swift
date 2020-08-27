@@ -18,7 +18,6 @@ class DetailFactsAssembly {
         detailFactsViewController.fact = fact
         
         return detailFactsViewController
-        
     }
     
 }

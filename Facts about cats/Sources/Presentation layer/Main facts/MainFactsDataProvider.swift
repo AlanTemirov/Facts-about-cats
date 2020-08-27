@@ -8,10 +8,12 @@
 
 import UIKit
 
+/// Data provider for implement `TableView` data source & delegate.
 class MainFactsDataProvider: NSObject {
     
     var itemsProvider: MainFactsDataProviderProtocol!
     
+    /// Closure to indicate when `FactModel` did selected.
     var didSelectFact: ItemClosure<FactModel>?
     
 }
@@ -30,7 +32,6 @@ extension MainFactsDataProvider: UITableViewDataSource {
             ) as? MainFactsTableViewCell else {
                 return UITableViewCell()
         }
-        
         
         cell.configure(with: itemsProvider.item(at: indexPath.row)?.text)
         

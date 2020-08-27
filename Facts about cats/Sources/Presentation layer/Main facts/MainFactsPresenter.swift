@@ -10,12 +10,14 @@ import Foundation
 
 class MainFactsPresenter: MainFactsPresenterProtocol, MainFactsRouterProtocol {
     
+    // MARK: - Properties
     weak var view: MainFactsViewProtocol!
     weak var transitionHandler: TransitionHandler!
     var interactor: MainFactsInteractorProtocol!
     
     private var facts: [FactModel] = []
     
+    // MARK: - MainFactsPresenterProtocol
     func onAppear() {
         view.setLoading(true)
         fetchFacts()

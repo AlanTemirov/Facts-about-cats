@@ -9,17 +9,24 @@
 import Foundation
 import CoreData
 
+/// Interface for mapping Json format.
+/// As for now used by ManagedObject classes.
 protocol Mappable {
     func mapping(json: [String: Any])
 }
 
-
+/// Main purpose is to map Json into `NSManagedObject` models.
 class JSONMapper {
     
     private typealias JSON = [String: Any]
     
     @discardableResult
-    func mapJSONArray<T: NSManagedObject>(data: Data, key: String?, entityClassName: String, context: NSManagedObjectContext) -> [T] {
+    func mapJSONArray<T: NSManagedObject>(
+        data: Data,
+        key: String?,
+        entityClassName: String,
+        context: NSManagedObjectContext
+    ) -> [T] {
         let jsonData = data.asJson
         var jsonArray = jsonData as? [JSON]
         if let key = key {
@@ -36,24 +43,6 @@ class JSONMapper {
             return entity as? T
             
             } ?? []
-    }
-    
-    @discardableResult
-    func mapJSONObject<T: NSManagedObject>(data: Data, key: String?, entityClassName: String, context: NSManagedObjectContext) -> T? {
-        let jsonData = data.asJson
-        var jsonObject = jsonData as? JSON
-        if let key = key {
-            jsonObject = (jsonData as? JSON)?[key] as? JSON
-        }
-        if let description = NSEntityDescription.entity(forEntityName: entityClassName, in: context) {
-            if let entity = NSManagedObject(entity: description, insertInto: context) as? Mappable {
-                if let jsonObject = jsonObject {
-                    entity.mapping(json: jsonObject)
-                }
-                return entity as? T
-            }
-        }
-        return nil
     }
     
 }

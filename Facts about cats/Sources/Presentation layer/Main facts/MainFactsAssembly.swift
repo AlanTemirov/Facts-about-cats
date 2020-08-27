@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Assembly of main facts module.
 class MainFactsAssembly {
     
     private let embeddedContainer: EmbeddedContainer

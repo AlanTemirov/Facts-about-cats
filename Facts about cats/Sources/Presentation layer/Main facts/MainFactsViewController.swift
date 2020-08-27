@@ -10,13 +10,16 @@ import UIKit
 
 class MainFactsViewController: UIViewController, MainFactsViewProtocol {
     
+    // MARK: - Outlets
     @IBOutlet private var tableView: UITableView!
     
+    // MARK: - Properties
     var presenter: MainFactsPresenterProtocol!
     var dataProvider: MainFactsDataProvider!
     
     private let refreshControl = UIRefreshControl()
     
+    // MARK: - Life cycle.
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,6 +36,7 @@ class MainFactsViewController: UIViewController, MainFactsViewProtocol {
         presenter.onAppear()
     }
     
+    // MARK: - MainFactsViewProtocol
     func reloadFacts() {
         DispatchQueue.main.async {
             self.tableView.reloadData()

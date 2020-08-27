@@ -8,21 +8,21 @@
 
 import Foundation
 
-enum RequestManagerError: Error {
-    case invalidPath
-}
-
-enum RequestType {
-    case get
-    case post
-}
-
+/// Interface for networking layer.
 protocol NetworkServiceProtocol {
+    
+    /// Request to network.
+    ///
+    /// - Parameters:
+    ///     - path: The url path type string.
+    ///     - type: The request type.
+    ///     - parameters: The dictionary of possible parameters. Optional
+    ///     - completion: The escaping block with optional data & error.
     func request(
         path: String,
         type: RequestType,
-        parameters: [String: Any]? ,
-        completion: @escaping (Data?, Error?) -> Void
+        parameters: [String: Any]?,
+        completion: @escaping ItemsClosure<Data?, Error?>
     )
 }
 
@@ -33,13 +33,14 @@ extension NetworkServiceProtocol {
         path: String,
         type: RequestType = .get,
         parameters: [String: Any]? = nil,
-        completion: @escaping (Data?, Error?) -> Void
+        completion: @escaping ItemsClosure<Data?, Error?>
     ) {
         request(path: path, type: type, parameters: parameters, completion: completion)
     }
     
 }
 
+/// Class to work with network layer.
 class NetworkService: NetworkServiceProtocol {
     
     func request(

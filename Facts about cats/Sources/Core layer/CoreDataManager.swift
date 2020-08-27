@@ -8,13 +8,7 @@
 
 import CoreData
 
-enum CoreDataErrors: Error {
-    case requestError(_ error: Error)
-    case wrongType
-    case unknown
-    
-}
-
+/// Interface to work with coredata database.
 protocol CoreDataManagerProtocol {
     
     var viewContext: NSManagedObjectContext { get }
@@ -23,14 +17,29 @@ protocol CoreDataManagerProtocol {
     
     func load<T: NSFetchRequestResult>(request: NSFetchRequest<T>) -> Result<[NSManagedObject], CoreDataErrors>
     
+    /// Saving in view context.
     func save()
     
     func clearData(entityName: String) throws
     
 }
 
+/// To work with coredata.
 class CoreDataManager: CoreDataManagerProtocol {
     
+    // MARK: - Properties.
+    
+    var viewContext: NSManagedObjectContext {
+        persistentContainer.viewContext
+    }
+    
+    var newBackgroundContext: NSManagedObjectContext {
+        persistentContainer.newBackgroundContext()
+    }
+    
+    // MARK: - Private properties.
+    
+    /// Default name of container.
     private static let defaultPersistentContainerName = "CatsFactsDataModel"
     
     private lazy var persistentContainer: NSPersistentContainer = {
@@ -44,17 +53,13 @@ class CoreDataManager: CoreDataManagerProtocol {
     
     private let persistentContainerName: String
     
+    // MARK: - Life cycle
+    
     init(persistentContainerName: String = defaultPersistentContainerName) {
         self.persistentContainerName = persistentContainerName
     }
     
-    var viewContext: NSManagedObjectContext {
-        persistentContainer.viewContext
-    }
-    
-    var newBackgroundContext: NSManagedObjectContext {
-        persistentContainer.newBackgroundContext()
-    }
+    // MARK: - Main functionality
     
     func save() {
         let context = persistentContainer.viewContext
@@ -90,4 +95,5 @@ class CoreDataManager: CoreDataManagerProtocol {
             }
         }
     }
+    
 }

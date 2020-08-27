@@ -8,8 +8,10 @@
 
 import Foundation
 
+/// Interface of Embedded container.
 protocol EmbeddedContainerProtocol {
     
+    /// Coredata manager to be used.
     var coreDataManager: CoreDataManagerProtocol { get }
     
 }

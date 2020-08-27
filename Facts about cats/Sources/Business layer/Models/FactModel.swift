@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Local (ponso) model.
 struct FactModel {
     
     let text: String?

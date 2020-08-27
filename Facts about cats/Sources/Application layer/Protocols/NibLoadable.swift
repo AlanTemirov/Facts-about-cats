@@ -21,12 +21,12 @@ public protocol NibLoadableProtocol {
 
 public extension NibLoadableProtocol {
     
-    /// - Returns: `UINib` with `identifier`.
+    /// Returns `UINib` with `identifier`.
     static var nib: UINib {
         UINib(nibName: identifier, bundle: nil)
     }
     
-    /// - Returns: `String` identifier` describing `Self`.
+    /// Returns `String` identifier` describing `Self`.
     static var identifier: String {
         String(describing: self)
     }
